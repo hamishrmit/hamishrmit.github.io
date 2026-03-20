@@ -1,0 +1,60 @@
+/* h1 {
+    color: rgb(33, 2, 189);
+}
+
+p {
+    color: rgb(120, 3, 149);
+}
+
+h3 {
+    color: rgb(30, 159, 97);
+}
+
+* {
+    color: hotpink;
+} */
+
+/* I am using this colour palette because... */
+
+body {
+  margin-left: 30px;
+  background-color: rgb(15, 2, 35);
+}
+
+h1 {
+  font-size: 40px;
+  font-family: "Archivo Black", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+p {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+ul {
+  margin-left: 50px;
+}
+
+.blue-color {
+  color: blue;
+}
+
+#venue {
+  color: blueviolet;
+}
+
+section {
+  text-align: center;
+  border: 3px solid red;
+}
+
+section > p {
+  border: 3px solid rgb(255, 125, 11);
+}
+
+.border-styling {
+  border: 2px solid brown;
+}
