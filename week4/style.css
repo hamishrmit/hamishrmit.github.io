@@ -1,0 +1,40 @@
+body {
+  margin: 0 auto;
+  font-size: 1.2rem;
+  margin-left: 30px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  padding: 1rem;
+}
+
+p {
+  width: 400px;
+  border: 1px solid rgba(230, 12, 12, 0.698);
+  background-color: rgb(40, 7, 62);
+  min-height: 150px;
+  margin-bottom: 30px;
+  padding: 1rem;
+}
+
+.vcenter {
+  height: 200px;
+  line-height: 160px;
+  text-align: center;
+}
+
+span {
+  color: blue;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
