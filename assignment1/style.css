@@ -1,16 +1,24 @@
+body {
+  margin: 0 auto;
+  font-size: 1.2rem;
+  text-align: center;
+  background-color: rgb(15, 2, 35);
+}
+
 h1 {
   font-size: 2rem;
   font-family: "Archivo Black", sans-serif;
   font-weight: 400;
   font-style: normal;
+  margin: auto;
+  padding: 15px;
 }
 
-body {
-  margin: 0 auto;
-  font-size: 1.2rem;
-  margin-left: 30px;
-  text-align: center;
-  background-color: rgb(15, 2, 35);
+h2 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  font-family: "Archivo";
+  padding: 10px;
 }
 
 p {
@@ -18,25 +26,20 @@ p {
   border: 1px solid rgba(230, 12, 12, 0.698);
   background-color: rgb(40, 7, 62);
   min-height: 150px;
-  margin-bottom: 30px;
   padding: 1rem;
+  margin: 15px auto;
+  font-family: "Archivo";
+  font-weight: 300;
+  line-height: 25px;
 }
 
-.vcenter {
-  height: 200px;
-  line-height: 160px;
-  text-align: center;
-}
-
-span {
-  color: blue;
-}
-
-ul {
+.firstline {
   display: flex;
-  list-style: none;
-  gap: 20px;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 30px;
+  justify-content: space-around;
+}
+
+img {
+  padding: 1rem;
+  max-width: 100%;
+  height: auto;
 }
