@@ -24,8 +24,8 @@ h2 {
 p {
   max-width: 700px;
   width: 100%;
-  border: 1px solid rgba(230, 12, 12, 0.698);
-  background-color: rgb(40, 7, 62);
+  border: 1px solid rgba(136, 26, 192, 0.698);
+  background-color: rgb(33, 6, 51);
   min-height: 150px;
   padding: 1rem;
   margin: 15px;
@@ -33,6 +33,7 @@ p {
   font-weight: 300;
   font-size: 1.5rem;
   line-height: 25px;
+  color: rgb(217, 213, 245);
 }
 
 img {
@@ -71,4 +72,6 @@ img {
   max-width: 1400px;
 }
 
-/* put underline for questions */
+.underline {
+  text-decoration: underline;
+}
