@@ -13,6 +13,7 @@ h1 {
   font-style: normal;
   margin: auto;
   padding: 15px;
+  color: white;
 }
 /* I used a large font size and the Archivo Black font to make the title stand out as the most prominent element, ensuring it immediately captures the viewer’s attention and reflects the bold style of the original website. */
 
@@ -21,6 +22,7 @@ h2 {
   font-weight: 300;
   font-family: "Archivo";
   padding: 10px;
+  color: white;
 }
 /* size and weight of the subheading is smaller to create a clear hierarchy between the title and supporting information, while maintaining consistency by using the same font family as the body text */
 
