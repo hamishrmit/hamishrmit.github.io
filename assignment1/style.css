@@ -4,6 +4,7 @@ body {
   text-align: center;
   background-color: rgb(15, 2, 35);
 }
+/* centred all text and content to create a clean and balanced layout across the webpage. The dark background colour establishes a consistent visual theme that balances out the bright aesthetic of Alannn's website. */
 
 h1 {
   font-size: 3rem;
@@ -13,6 +14,7 @@ h1 {
   margin: auto;
   padding: 15px;
 }
+/* I used a large font size and the Archivo Black font to make the title stand out as the most prominent element, ensuring it immediately captures the viewer’s attention and reflects the bold style of the original website. */
 
 h2 {
   font-size: 1.5rem;
@@ -20,6 +22,7 @@ h2 {
   font-family: "Archivo";
   padding: 10px;
 }
+/* size and weight of the subheading is smaller to create a clear hierarchy between the title and supporting information, while maintaining consistency by using the same font family as the body text */
 
 p {
   max-width: 700px;
@@ -35,6 +38,7 @@ p {
   line-height: 25px;
   color: rgb(217, 213, 245);
 }
+/* I maxxed the width of the text boxes to improve readability and prevent long line lengths. The border and background colour help separate each response into clear sections, while maintaining the overall colour scheme. */
 
 img {
   max-width: 700px;
@@ -42,6 +46,7 @@ img {
   height: 100%; /* match the height of the flex container */
   object-fit: cover; /* prevents distortion */
 }
+/* used object-fit and width/height functions to make sure images scale responsively while maintaining their proportions, allowing them to align neatly with the text boxes and remain visually consistent across different screen sizes */
 
 .firstline,
 .secondline,
@@ -54,6 +59,7 @@ img {
   gap: 20px;
   flex-wrap: wrap;
 }
+/* I used flexbox to organise each row of content, allowing text and images to sit side by side while staying aligned. Also implemented wrapping to make layout adapt to different screen sizes. */
 
 .image-wrapper {
   max-width: 700px;
@@ -67,11 +73,14 @@ img {
   height: 100%;
   object-fit: cover;
 }
+/* for the image-wrapper part I used ChatGPT to explain to me the code that I would need to use. The wrapper is used to control image spacing and alignment, ensuring consistent image scaling and preventing distortion. */
 
 #long {
   max-width: 1400px;
 }
+/* made an id for this section to allow the text to span across the page, creating variation in the layout and balancing the content content */
 
 .underline {
   text-decoration: underline;
 }
+/* used underline to emphasise which prompt was being answered, improving clarity for the viewer */
