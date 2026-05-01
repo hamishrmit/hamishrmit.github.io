@@ -43,10 +43,23 @@ function makeItPop() {
   msg.textContent = "popping...";
 }
 
-// didn't see full code
-// const body = document.querySelector("body");
-// body.addEventListener("keydown", playVideo);
+// access the play pause button
+const playPauseButton = document.querySelector("#play-pause-button");
+console.log(playPauseButton);
 
-// function playVideo() {
-//     myVideo.play();
-// }
+// access the image
+const playPauseImg = document.querySelector("#play-pause-img");
+console.log(playPauseImg);
+
+// add a click event listener to the button
+playPauseButton.addEventListener("click", toggleVideo);
+
+function toggleVideo() {
+  if (myVideo.paused === true || myVideo.ended === true) {
+    myVideo.play();
+    playPauseImg.src = "https://img.icons8.com/ios-glyphs/30/pause--v2.png";
+  } else {
+    myVideo.pause();
+    playPauseImg.src = "https://img.icons8.com/ios-glyphs/30/play--v2.png";
+  }
+}

@@ -1,3 +1,8 @@
+:root {
+  --primary-color: rgb(119, 119, 176);
+  --secondary-color: red;
+}
+
 audio {
   display: block;
   margin-bottom: 20px;
@@ -8,6 +13,7 @@ button {
   border-radius: 12px;
   padding: 8px;
   cursor: pointer;
+  background-color: var(--primary-color);
 }
 
 button:hover {
