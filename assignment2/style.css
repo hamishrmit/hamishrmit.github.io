@@ -14,11 +14,6 @@
   --button-bg: rgba(255, 255, 255, 0.08);
 }
 
-/*
-  Colour palette directly inspired by the video:
-  black shadows, neon purple highlights and deep pink glow.
-*/
-
 body {
   font-family: "Inter", sans-serif;
 
@@ -38,11 +33,7 @@ body {
   overflow: hidden;
 }
 
-/*
-  Reduced spacing and sizing so the
-  entire interface fits on screen
-  without requiring scrolling.
-*/
+/* I chose a colour palette directly inspired by the video: black shadows, neon purple highlights and deep pink glow */
 
 .page-layout {
   min-height: 100vh;
@@ -58,6 +49,8 @@ body {
   padding: 1.5rem 0;
 }
 
+/* used flexbox to align content */
+
 .container {
   width: min(950px, 88%);
 
@@ -66,10 +59,7 @@ body {
   justify-content: center;
 }
 
-/*
-  Text glow reinforces the surreal and immersive
-  digital art atmosphere.
-*/
+/* reduced spacing and sizing so the entire interface fits on screen without requiring scrolling */
 
 .hero {
   text-align: center;
@@ -107,10 +97,7 @@ body {
   color: var(--secondary-text);
 }
 
-/*
-  Glow around the player becomes
-  more obvious with interaction.
-*/
+/* text glow reinforces the surreal and immersive digital art atmosphere */
 
 .player-glow {
   border-radius: 24px;
@@ -121,6 +108,8 @@ body {
     0 0 35px rgba(140, 60, 255, 0.28),
     0 0 75px rgba(255, 46, 159, 0.15);
 }
+
+/* glow around the player becomes more obvious with interaction */
 
 .media-player {
   background: var(--panel-color);
@@ -144,10 +133,6 @@ video {
   display: block;
 }
 
-/*
-  Ambient playback lighting effect.
-*/
-
 .ambient-light {
   position: absolute;
 
@@ -166,10 +151,7 @@ video {
   transition: opacity 1s ease;
 }
 
-/*
-  Balanced control layout improves
-  visual hierarchy and usability.
-*/
+/* ambient playback lighting effect */
 
 .custom-controls {
   display: flex;
@@ -218,10 +200,7 @@ video {
     box-shadow 0.25s ease;
 }
 
-/*
-  Hover glow improves feedback
-  without overcomplicating the UI.
-*/
+/* balanced control layout improves visual hierarchy and usability */
 
 .custom-controls button:hover {
   transform: scale(1.06);
@@ -257,10 +236,7 @@ video {
   cursor: pointer;
 }
 
-/*
-  Gradient progress bar visually connects
-  with the purple and pink lighting.
-*/
+/* hover glow improves feedback without overcomplicating the UI */
 
 #progress-bar-fill {
   display: block;
@@ -284,9 +260,7 @@ video {
   color: var(--secondary-text);
 }
 
-/*
-  Mobile responsive adjustments.
-*/
+/* gradient progress bar visually connects with the purple and pink lighting */
 
 @media (max-width: 700px) {
   .custom-controls {
@@ -299,3 +273,5 @@ video {
     letter-spacing: 4px;
   }
 }
+
+/* mobile responsive adjustments */

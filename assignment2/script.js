@@ -6,6 +6,8 @@ const muteImg = document.querySelector("#mute-img");
 
 const rewindBtn = document.querySelector("#rewind-btn");
 
+const playPauseBtn = document.querySelector("#play-pause-btn");
+
 const forwardBtn = document.querySelector("#forward-btn");
 
 const muteBtn = document.querySelector("#mute-btn");
@@ -28,11 +30,7 @@ const playerGlow = document.querySelector("#player-glow");
 
 const likeCount = document.querySelector("#like-count");
 
-/*
-  Browser default controls removed so
-  the custom player design becomes
-  the focus of the experience.
-*/
+/* defined variables with ids from index file */
 
 video.removeAttribute("controls");
 
@@ -44,10 +42,7 @@ video.addEventListener("loadedmetadata", () => {
   durationDisplay.textContent = formatTime(video.duration);
 });
 
-/*
-  Ambient glow appears during playback
-  to make the video feel more immersive.
-*/
+/* browser default controls removed so the custom player design becomes the focus of the experience */
 
 video.addEventListener("play", () => {
   ambientLight.style.opacity = "1";
@@ -56,6 +51,8 @@ video.addEventListener("play", () => {
 video.addEventListener("pause", () => {
   ambientLight.style.opacity = "0";
 });
+
+/* ambient glow appears during playback to make the video feel more immersive */
 
 function togglePlayPause() {
   if (video.paused || video.ended) {
@@ -69,9 +66,9 @@ function togglePlayPause() {
   }
 }
 
-/*
-  Playback skipping functionality.
-*/
+playPauseBtn.addEventListener("click", togglePlayPause);
+
+/* play and pause button functionality */
 
 rewindBtn.addEventListener("click", () => {
   video.currentTime -= 10;
@@ -80,6 +77,8 @@ rewindBtn.addEventListener("click", () => {
 forwardBtn.addEventListener("click", () => {
   video.currentTime += 10;
 });
+
+/* playback skipping functionality */
 
 muteBtn.addEventListener("click", () => {
   video.muted = !video.muted;
@@ -91,10 +90,7 @@ muteBtn.addEventListener("click", () => {
   }
 });
 
-/*
-  Fullscreen mode supports a more
-  cinematic viewing experience.
-*/
+/* mute video functionality */
 
 fullscreenBtn.addEventListener("click", () => {
   if (video.requestFullscreen) {
@@ -102,20 +98,13 @@ fullscreenBtn.addEventListener("click", () => {
   }
 });
 
-/*
-  Progress bar continuously reflects
-  playback position.
-*/
+/* fullscreen mode supports a more cinematic viewing experience */
 
 function updateProgressBar() {
   const value = (video.currentTime / video.duration) * 100;
 
   progressBar.style.width = value + "%";
 }
-
-/*
-  Interactive scrubbing system.
-*/
 
 progressContainer.addEventListener("click", (event) => {
   const progressWidth = progressContainer.clientWidth;
@@ -126,6 +115,8 @@ progressContainer.addEventListener("click", (event) => {
 
   video.currentTime = (clickedX / progressWidth) * duration;
 });
+
+/* progress bar continuously reflects playback position */
 
 function updateTimeDisplay() {
   currentTimeDisplay.textContent = formatTime(video.currentTime);
@@ -141,11 +132,7 @@ function formatTime(time) {
   return `${minutes}:${seconds}`;
 }
 
-/*
-  Main interaction feature:
-  repeated likes increase glow intensity
-  around the video player.
-*/
+/* interactive skipping system, had to get chatgpt's and google's help to teach me for this one */
 
 let glowStrength = 0;
 
@@ -155,10 +142,6 @@ likeBtn.addEventListener("click", () => {
   totalLikes++;
 
   likeCount.textContent = totalLikes;
-
-  /*
-    Glow now increases more noticeably.
-  */
 
   glowStrength += 1;
 
@@ -171,11 +154,7 @@ likeBtn.addEventListener("click", () => {
     0 0 ${pinkGlow}px rgba(255, 46, 159, 0.45)
   `;
 
-  /*
-    Simple pulse animation.
-    Easier and more realistic
-    for a class assignment scope.
-  */
+  /* main unique interaction feature is that when the user likes the video it increases the glow around the video player. also had to get google and chatgpt to teach me for this one too */
 
   likeBtn.style.transform = "scale(1.15)";
 
@@ -183,3 +162,5 @@ likeBtn.addEventListener("click", () => {
     likeBtn.style.transform = "scale(1)";
   }, 160);
 });
+
+/* simple pulse animationm for when user clicks on like button */

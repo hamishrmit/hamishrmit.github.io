@@ -3,50 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Tenebrae Kinesis</title>
-
     <!-- chose the name 'Tenebrae Kinesis' for the video art because Tenebrae means darkness/shadows and Kinesis means random movement, so it seemed like a fitting and cool name -->
-
-    <!-- google fonts selected to match the dark futuristic and atmospheric visual language of the video artwork. Orbitron gives the title a cinematic sci-fi feeling, while Inter keeps the interface readable and modern.
-    -->
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Orbitron:wght@500;700&display=swap"
       rel="stylesheet"
     />
-
+    <!-- google fonts selected to match the dark futuristic and atmospheric vibe of artwork. Orbitron gives the heading a sci-fi kinda feeling, while Inter keeps the interface readable and modern -->
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
-
     <script src="script.js" defer></script>
   </head>
-
   <body>
-    <!--
-      Layout intentionally minimal so the artwork itself
-      becomes the primary visual focus instead of large
-      amounts of explanatory website text.
-    -->
-
     <main class="page-layout">
       <header class="hero">
-        <p class="sub-heading">HAUNTING • HYPNOTIC • ABSTRACT</p>
-
+        <!-- made layout intentionally minimal so the artwork itself becomes the primary visual focus instead of large amounts of explanatory website text. -->
+        <p class="sub-heading">ATMOSPHERIC • HYPNOTIC • ETHEREAL</p>
+        <!-- added three adjectives underneath title to describe/make statements about the artwork -->
         <h1>Tenebrae Kinesis</h1>
       </header>
-
       <div class="container">
-        <!--
-          Glow wrapper allows JavaScript to dynamically
-          increase lighting intensity when users interact
-          with the like button.
-        -->
-
         <section class="player-glow" id="player-glow">
+          <!-- glow wrapper to increase lighting intensity when users interact with the like button. -->
           <section class="media-player">
             <div class="video-wrapper">
               <video id="custom-video-player">
@@ -55,37 +35,25 @@
                   type="video/mp4"
                 />
               </video>
-
-              <!--
-                Ambient overlay creates subtle cinematic
-                lighting during playback.
-              -->
-
               <div class="ambient-light"></div>
+              <!-- Ambient overlay creates subtle cinematic lighting during playback -->
             </div>
-
-            <!--
-              Controls separated into left / middle / right
-              groups for improved balance and usability.
-            -->
-
             <div class="custom-controls">
               <div class="controls-left">
+                <!-- button controls separated into left/middle/right groups for balance -->
                 <button id="rewind-btn">
                   <img
                     src="https://img.icons8.com/ios-glyphs/30/rewind.png"
                     alt="Rewind"
                   />
                 </button>
-
-                <button id="play-pause-btn" onclick="togglePlayPause()">
+                <button id="play-pause-btn">
                   <img
                     id="play-pause-img"
                     src="https://img.icons8.com/ios-glyphs/30/play--v2.png"
                     alt="Play"
                   />
                 </button>
-
                 <button id="forward-btn">
                   <img
                     src="https://img.icons8.com/ios-glyphs/30/fast-forward.png"
@@ -93,30 +61,16 @@
                   />
                 </button>
               </div>
-
-              <!--
-                Main custom interaction feature:
-                users can repeatedly “like” the artwork,
-                increasing the surrounding glow intensity.
-              -->
-
               <div class="controls-middle">
                 <button id="like-btn">
                   <img
                     src="https://img.icons8.com/?size=100&id=DFU1kReSUccu&format=png&color=FFFFFF"
                     alt="Like"
                   />
-
-                  <!-- Particle effects -->
-                  <span class="particle particle-1"></span>
-                  <span class="particle particle-2"></span>
-                  <span class="particle particle-3"></span>
-                  <span class="particle particle-4"></span>
                 </button>
-
                 <span id="like-count">0</span>
               </div>
-
+              <!-- created users can repeatedly “like” the artwork, increasing the surrounding glow intensity. -->
               <div class="controls-right">
                 <button id="mute-btn">
                   <img
@@ -125,7 +79,6 @@
                     alt="Volume"
                   />
                 </button>
-
                 <button id="fullscreen-btn">
                   <img
                     src="https://img.icons8.com/ios-glyphs/30/full-screen--v1.png"
@@ -134,19 +87,15 @@
                 </button>
               </div>
             </div>
-
-            <!--
-              Interactive progress bar allows timeline scrubbing.
-            -->
-
             <div class="progress-container" id="progress-container">
               <span id="progress-bar-fill"></span>
             </div>
-
+            <!-- added interactive progress bar so users can skip to specific times throughout video -->
             <div class="time-display">
               <span id="current-time">0:00</span>
               <span id="duration">0:00</span>
             </div>
+            <!-- added time display to show video progress -->
           </section>
         </section>
       </div>
