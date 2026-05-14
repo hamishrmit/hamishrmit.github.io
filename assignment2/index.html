@@ -3,74 +3,153 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Media player</title>
+
+    <title>Tenebrae Kinesis</title>
+
+    <!-- chose the name 'Tenebrae Kinesis' for the video art because Tenebrae means darkness/shadows and Kinesis means random movement, so it seemed like a fitting and cool name -->
+
+    <!-- google fonts selected to match the dark futuristic and atmospheric visual language of the video artwork. Orbitron gives the title a cinematic sci-fi feeling, while Inter keeps the interface readable and modern.
+    -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
-      href="https://fonts.googleapis.com/css2?family=REM:ital,wght@0,100..900;1,100..900&family=Tuffy:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Orbitron:wght@500;700&display=swap"
       rel="stylesheet"
     />
+
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
+
     <script src="script.js" defer></script>
   </head>
+
   <body>
-    <header>
-      <!-- <h1>My awesomest media player!!!</h1> -->
-    </header>
-    <main class="double-border">
-      <div class="main-screen">
-        <video src="stardust.mp4" id="my-video"></video>
-      </div>
-      <div class="playlist">
-        <button class="double-border" id="stardust-vid-button">Stardust</button>
-        <button class="double-border" id="zenscape-vid-button">Zenscape</button>
-        <button class="double-border" id="musicvideo-vid-button">
-          Music Video
-        </button>
-      </div>
-      <div class="controls">
-        <button id="play-pause-button" class="double-border">
-          <img
-            src="https://img.icons8.com/ios-glyphs/30/play--v2.png"
-            alt=""
-            id="play-pause-img"
-          />
-        </button>
-        <button id="mute-unmute-button" class="double-border">
-          <img
-            src="https://img.icons8.com/ios-glyphs/30/no-audio--v1.png"
-            alt=""
-            id="mute-unmute-img"
-          />
-        </button>
-        <button id="fast-forward-button" class="double-border">
-          <img
-            src="https://img.icons8.com/ios-glyphs/30/fast-forward.png"
-            alt=""
-            id="fast-forward-img"
-          />
-        </button>
-        <button id="step1-button" class="double-border">1</button>
-        <button id="step2-button" class="double-border">2</button>
-        <div id="progress-bar-container"><span id="progress-bar"></span></div>
-        <button id="fullscreen-button" class="double-border">
-          <img
-            src="https://img.icons8.com/ios-glyphs/30/full-screen--v1.png"
-            alt=""
-            id="fullscreen-img"
-          />
-        </button>
-        <button id="heart-button" class="double-border">
-          <img
-            src="https://img.icons8.com/?size=36&id=DFU1kReSUccu&format=png&color=000000"
-            alt=""
-            id="fullscreen-img"
-          />
-        </button>
-        <div id="likes"></div>
+    <!--
+      Layout intentionally minimal so the artwork itself
+      becomes the primary visual focus instead of large
+      amounts of explanatory website text.
+    -->
+
+    <main class="page-layout">
+      <header class="hero">
+        <p class="sub-heading">HAUNTING • HYPNOTIC • ABSTRACT</p>
+
+        <h1>Tenebrae Kinesis</h1>
+      </header>
+
+      <div class="container">
+        <!--
+          Glow wrapper allows JavaScript to dynamically
+          increase lighting intensity when users interact
+          with the like button.
+        -->
+
+        <section class="player-glow" id="player-glow">
+          <section class="media-player">
+            <div class="video-wrapper">
+              <video id="custom-video-player">
+                <source
+                  src="https://thelongesthumstore.sgp1.cdn.digitaloceanspaces.com/IM-2250/miac.mp4"
+                  type="video/mp4"
+                />
+              </video>
+
+              <!--
+                Ambient overlay creates subtle cinematic
+                lighting during playback.
+              -->
+
+              <div class="ambient-light"></div>
+            </div>
+
+            <!--
+              Controls separated into left / middle / right
+              groups for improved balance and usability.
+            -->
+
+            <div class="custom-controls">
+              <div class="controls-left">
+                <button id="rewind-btn">
+                  <img
+                    src="https://img.icons8.com/ios-glyphs/30/rewind.png"
+                    alt="Rewind"
+                  />
+                </button>
+
+                <button id="play-pause-btn" onclick="togglePlayPause()">
+                  <img
+                    id="play-pause-img"
+                    src="https://img.icons8.com/ios-glyphs/30/play--v2.png"
+                    alt="Play"
+                  />
+                </button>
+
+                <button id="forward-btn">
+                  <img
+                    src="https://img.icons8.com/ios-glyphs/30/fast-forward.png"
+                    alt="Forward"
+                  />
+                </button>
+              </div>
+
+              <!--
+                Main custom interaction feature:
+                users can repeatedly “like” the artwork,
+                increasing the surrounding glow intensity.
+              -->
+
+              <div class="controls-middle">
+                <button id="like-btn">
+                  <img
+                    src="https://img.icons8.com/?size=100&id=DFU1kReSUccu&format=png&color=FFFFFF"
+                    alt="Like"
+                  />
+
+                  <!-- Particle effects -->
+                  <span class="particle particle-1"></span>
+                  <span class="particle particle-2"></span>
+                  <span class="particle particle-3"></span>
+                  <span class="particle particle-4"></span>
+                </button>
+
+                <span id="like-count">0</span>
+              </div>
+
+              <div class="controls-right">
+                <button id="mute-btn">
+                  <img
+                    id="mute-img"
+                    src="https://img.icons8.com/ios-glyphs/30/high-volume--v2.png"
+                    alt="Volume"
+                  />
+                </button>
+
+                <button id="fullscreen-btn">
+                  <img
+                    src="https://img.icons8.com/ios-glyphs/30/full-screen--v1.png"
+                    alt="Fullscreen"
+                  />
+                </button>
+              </div>
+            </div>
+
+            <!--
+              Interactive progress bar allows timeline scrubbing.
+            -->
+
+            <div class="progress-container" id="progress-container">
+              <span id="progress-bar-fill"></span>
+            </div>
+
+            <div class="time-display">
+              <span id="current-time">0:00</span>
+              <span id="duration">0:00</span>
+            </div>
+          </section>
+        </section>
       </div>
     </main>
-    <footer>Icons by <a href="https://icons8.com/">Icons8</a></footer>
   </body>
 </html>

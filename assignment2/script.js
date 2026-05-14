@@ -1,149 +1,185 @@
-const myVideo = document.querySelector("#my-video");
-console.log(myVideo);
-
-// --------------------------------------------------------------------
-
-// play pause logic
-const playPauseButton = document.querySelector("#play-pause-button");
-console.log(playPauseButton);
+const video = document.querySelector("#custom-video-player");
 
 const playPauseImg = document.querySelector("#play-pause-img");
-console.log(playPauseImg);
 
-playPauseButton.addEventListener("click", toggleVideo);
+const muteImg = document.querySelector("#mute-img");
 
-function toggleVideo() {
-  if (myVideo.paused === true || myVideo.ended === true) {
-    myVideo.play();
+const rewindBtn = document.querySelector("#rewind-btn");
+
+const forwardBtn = document.querySelector("#forward-btn");
+
+const muteBtn = document.querySelector("#mute-btn");
+
+const fullscreenBtn = document.querySelector("#fullscreen-btn");
+
+const progressBar = document.querySelector("#progress-bar-fill");
+
+const progressContainer = document.querySelector("#progress-container");
+
+const currentTimeDisplay = document.querySelector("#current-time");
+
+const durationDisplay = document.querySelector("#duration");
+
+const ambientLight = document.querySelector(".ambient-light");
+
+const likeBtn = document.querySelector("#like-btn");
+
+const playerGlow = document.querySelector("#player-glow");
+
+const likeCount = document.querySelector("#like-count");
+
+/*
+  Browser default controls removed so
+  the custom player design becomes
+  the focus of the experience.
+*/
+
+video.removeAttribute("controls");
+
+video.addEventListener("timeupdate", updateProgressBar);
+
+video.addEventListener("timeupdate", updateTimeDisplay);
+
+video.addEventListener("loadedmetadata", () => {
+  durationDisplay.textContent = formatTime(video.duration);
+});
+
+/*
+  Ambient glow appears during playback
+  to make the video feel more immersive.
+*/
+
+video.addEventListener("play", () => {
+  ambientLight.style.opacity = "1";
+});
+
+video.addEventListener("pause", () => {
+  ambientLight.style.opacity = "0";
+});
+
+function togglePlayPause() {
+  if (video.paused || video.ended) {
+    video.play();
+
     playPauseImg.src = "https://img.icons8.com/ios-glyphs/30/pause--v2.png";
   } else {
-    myVideo.pause();
+    video.pause();
+
     playPauseImg.src = "https://img.icons8.com/ios-glyphs/30/play--v2.png";
   }
 }
 
-// ----------------------------------------------------------------------
+/*
+  Playback skipping functionality.
+*/
 
-// mute unmute logic
-const muteUnmuteButton = document.querySelector("#mute-unmute-button");
-console.log(muteUnmuteButton);
+rewindBtn.addEventListener("click", () => {
+  video.currentTime -= 10;
+});
 
-const muteUnmuteImg = document.querySelector("#mute-unmute-img");
-console.log(muteUnmuteImg);
+forwardBtn.addEventListener("click", () => {
+  video.currentTime += 10;
+});
 
-muteUnmuteButton.addEventListener("click", toggleSound);
+muteBtn.addEventListener("click", () => {
+  video.muted = !video.muted;
 
-function toggleSound() {
-  if (myVideo.muted === true) {
-    myVideo.muted = false;
-    muteUnmuteImg.src =
-      "https://img.icons8.com/ios-glyphs/30/high-volume--v2.png";
+  if (video.muted) {
+    muteImg.src = "https://img.icons8.com/ios-glyphs/30/no-audio--v1.png";
   } else {
-    myVideo.muted = true;
-    muteUnmuteImg.src = "https://img.icons8.com/ios-glyphs/30/no-audio--v1.png";
+    muteImg.src = "https://img.icons8.com/ios-glyphs/30/high-volume--v2.png";
   }
-}
+});
 
-// -----------------------------------------------------------------------
+/*
+  Fullscreen mode supports a more
+  cinematic viewing experience.
+*/
 
-// step logic
-const step1Button = document.querySelector("#step1-button");
-console.log(step1Button);
-
-step1Button.addEventListener("click", gotoStep1);
-
-function gotoStep1() {
-  myVideo.currentTime = 17.0;
-}
-
-const step2Button = document.querySelector("#step2-button");
-console.log(step2Button);
-
-step2Button.addEventListener("click", gotoStep2);
-
-function gotoStep2() {
-  myVideo.currentTime = 52.0;
-}
-
-// -----------------------------------------------------------------------
-
-// likes logic
-const heartButton = document.querySelector("#heart-button");
-console.log(heartButton);
-
-let likesCount = 0;
-const likes = document.querySelector("#likes");
-console.log(likes);
-
-heartButton.addEventListener("click", showLikes);
-
-function showLikes() {
-  likesCount++;
-  likes.textContent = likesCount;
-}
-
-// -----------------------------------------------------------------------
-
-// fullscreen logic
-const fullscreenButton = document.querySelector("#fullscreen-button");
-console.log(fullscreenButton);
-
-fullscreenButton.addEventListener("click", goFullscreen);
-myVideo.addEventListener("dblclick", goFullscreen);
-
-function goFullscreen() {
-  if (!document.fullscreenElement) {
-    myVideo.requestFullscreen();
-  } else {
-    document.exitFullscreen();
+fullscreenBtn.addEventListener("click", () => {
+  if (video.requestFullscreen) {
+    video.requestFullscreen();
   }
-}
-
-// -----------------------------------------------------------------------
-
-// fullscreen logic
-const progressBar = document.querySelector("#progress-bar");
-console.log(progressBar);
-
-myVideo.addEventListener("timeupdate", updateProgress);
-
-function updateProgress() {
-  let progress = Math.floor((myVideo.currentTime / myVideo.duration) * 100);
-  //   console.log(progress);
-  progressBar.style.width = progress + "%";
-}
-
-// -----------------------------------------------------------------------
-
-const videoList = [
-  { id: 1, src: "stardust.mp4" },
-  { id: 2, src: "zenscape.mp4" },
-  {
-    id: 3,
-    src: "https://thelongesthumstore.sgp1.cdn.digitaloceanspaces.com/IM-2250/miac.mp4",
-  },
-];
-
-const stardustButton = document.querySelector("#stardust-vid-button");
-console.log(stardustButton);
-stardustButton.addEventListener("click", function () {
-  chooseVideo(0);
 });
 
-const zenscapeButton = document.querySelector("#zenscape-vid-button");
-console.log(zenscapeButton);
-zenscapeButton.addEventListener("click", function () {
-  chooseVideo(1);
-});
-const musicvidButton = document.querySelector("#musicvideo-vid-button");
-console.log(musicvidButton);
-musicvidButton.addEventListener("click", function () {
-  chooseVideo(2);
+/*
+  Progress bar continuously reflects
+  playback position.
+*/
+
+function updateProgressBar() {
+  const value = (video.currentTime / video.duration) * 100;
+
+  progressBar.style.width = value + "%";
+}
+
+/*
+  Interactive scrubbing system.
+*/
+
+progressContainer.addEventListener("click", (event) => {
+  const progressWidth = progressContainer.clientWidth;
+
+  const clickedX = event.offsetX;
+
+  const duration = video.duration;
+
+  video.currentTime = (clickedX / progressWidth) * duration;
 });
 
-function chooseVideo(id) {
-  console.log(videoList[id].src);
-  myVideo.src = videoList[id].src;
-  myVideo.load();
-  myVideo.play();
+function updateTimeDisplay() {
+  currentTimeDisplay.textContent = formatTime(video.currentTime);
 }
+
+function formatTime(time) {
+  const minutes = Math.floor(time / 60);
+
+  const seconds = Math.floor(time % 60)
+    .toString()
+    .padStart(2, "0");
+
+  return `${minutes}:${seconds}`;
+}
+
+/*
+  Main interaction feature:
+  repeated likes increase glow intensity
+  around the video player.
+*/
+
+let glowStrength = 0;
+
+let totalLikes = 0;
+
+likeBtn.addEventListener("click", () => {
+  totalLikes++;
+
+  likeCount.textContent = totalLikes;
+
+  /*
+    Glow now increases more noticeably.
+  */
+
+  glowStrength += 1;
+
+  const purpleGlow = 35 + glowStrength * 18;
+
+  const pinkGlow = 70 + glowStrength * 16;
+
+  playerGlow.style.boxShadow = `
+    0 0 ${purpleGlow}px rgba(140, 60, 255, 0.65),
+    0 0 ${pinkGlow}px rgba(255, 46, 159, 0.45)
+  `;
+
+  /*
+    Simple pulse animation.
+    Easier and more realistic
+    for a class assignment scope.
+  */
+
+  likeBtn.style.transform = "scale(1.15)";
+
+  setTimeout(() => {
+    likeBtn.style.transform = "scale(1)";
+  }, 160);
+});
