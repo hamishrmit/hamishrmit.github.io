@@ -148,7 +148,7 @@ likeBtn.addEventListener("click", () => {
     0 0 ${pinkGlow}px rgba(255, 46, 159, 0.45)
   `;
 
-  /* main unique interaction feature is that when the user likes the video it increases the glow around the video player. also had to get google and chatgpt to teach me for this one too */
+  /* main unique interaction feature is that when the user likes the video it increases the glow around the video player, which allows the user to interact with and add to the video art themselves. also had to get google and chatgpt to teach me for this one too */
 
   likeBtn.style.transform = "scale(1.15)";
 
