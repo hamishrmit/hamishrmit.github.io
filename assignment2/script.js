@@ -22,8 +22,6 @@ const currentTimeDisplay = document.querySelector("#current-time");
 
 const durationDisplay = document.querySelector("#duration");
 
-const ambientLight = document.querySelector(".ambient-light");
-
 const likeBtn = document.querySelector("#like-btn");
 
 const playerGlow = document.querySelector("#player-glow");
@@ -34,6 +32,8 @@ const likeCount = document.querySelector("#like-count");
 
 video.removeAttribute("controls");
 
+/* browser default controls removed so the custom player design becomes the focus of the experience */
+
 video.addEventListener("timeupdate", updateProgressBar);
 
 video.addEventListener("timeupdate", updateTimeDisplay);
@@ -42,17 +42,7 @@ video.addEventListener("loadedmetadata", () => {
   durationDisplay.textContent = formatTime(video.duration);
 });
 
-/* browser default controls removed so the custom player design becomes the focus of the experience */
-
-video.addEventListener("play", () => {
-  ambientLight.style.opacity = "1";
-});
-
-video.addEventListener("pause", () => {
-  ambientLight.style.opacity = "0";
-});
-
-/* ambient glow appears during playback to make the video feel more immersive */
+/* gets total video duration once media fully loads */
 
 function togglePlayPause() {
   if (video.paused || video.ended) {
@@ -78,7 +68,7 @@ forwardBtn.addEventListener("click", () => {
   video.currentTime += 10;
 });
 
-/* playback skipping functionality */
+/* playback skipping functionality backwards and forwards 10 seconds */
 
 muteBtn.addEventListener("click", () => {
   video.muted = !video.muted;
@@ -98,7 +88,7 @@ fullscreenBtn.addEventListener("click", () => {
   }
 });
 
-/* fullscreen mode supports a more cinematic viewing experience */
+/* checks if fullscreen is supported by browser, fullscreen mode makes it a more cinematic viewing experience */
 
 function updateProgressBar() {
   const value = (video.currentTime / video.duration) * 100;
@@ -106,17 +96,21 @@ function updateProgressBar() {
   progressBar.style.width = value + "%";
 }
 
+/* converts playback into percentage so that progress bar continuously reflects playback position */
+
 progressContainer.addEventListener("click", (event) => {
   const progressWidth = progressContainer.clientWidth;
 
   const clickedX = event.offsetX;
+
+  /* gets horizontal position of users click on timeline */
 
   const duration = video.duration;
 
   video.currentTime = (clickedX / progressWidth) * duration;
 });
 
-/* progress bar continuously reflects playback position */
+/* interactive skipping system, had to get chatgpt's and google's help to teach me for this one */
 
 function updateTimeDisplay() {
   currentTimeDisplay.textContent = formatTime(video.currentTime);
@@ -132,7 +126,7 @@ function formatTime(time) {
   return `${minutes}:${seconds}`;
 }
 
-/* interactive skipping system, had to get chatgpt's and google's help to teach me for this one */
+/* converts long decimal time values into readable minute/second format, needed googles/W3schools help for the logic here */
 
 let glowStrength = 0;
 
@@ -163,4 +157,4 @@ likeBtn.addEventListener("click", () => {
   }, 160);
 });
 
-/* simple pulse animationm for when user clicks on like button */
+/* simple pulse animation for when user clicks on like button */

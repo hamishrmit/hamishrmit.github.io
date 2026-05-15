@@ -14,6 +14,8 @@
   --button-bg: rgba(255, 255, 255, 0.08);
 }
 
+/* css variables used to keep colours consistent across the whole website */
+
 body {
   font-family: "Inter", sans-serif;
 
@@ -26,11 +28,11 @@ body {
     ),
     #07010f;
 
+  /* layered radial gradients used to create a unique background lighting */
+
   color: var(--text-color);
 
   min-height: 100vh;
-
-  overflow: hidden;
 }
 
 /* I chose a colour palette directly inspired by the video: black shadows, neon purple highlights and deep pink glow */
@@ -79,6 +81,8 @@ body {
     0 0 25px rgba(255, 46, 159, 0.4);
 }
 
+/* added glowing text shadow to connect to neon colour palette */
+
 .hero h1 {
   font-family: "Orbitron", sans-serif;
 
@@ -88,6 +92,8 @@ body {
 
   margin-top: 0.4rem;
 }
+
+/* larger title size used to create stronger visual hierarchy */
 
 .sub-heading {
   letter-spacing: 4px;
@@ -109,7 +115,7 @@ body {
     0 0 75px rgba(255, 46, 159, 0.15);
 }
 
-/* glow around the player becomes more obvious with interaction */
+/* glow around the media player becomes more obvious with interaction, searched up on google how to do transition */
 
 .media-player {
   background: var(--panel-color);
@@ -123,6 +129,8 @@ body {
   overflow: hidden;
 }
 
+/* blur effect helps separate video from background */
+
 .video-wrapper {
   position: relative;
 }
@@ -133,25 +141,7 @@ video {
   display: block;
 }
 
-.ambient-light {
-  position: absolute;
-
-  inset: 0;
-
-  background: radial-gradient(
-    circle,
-    rgba(255, 46, 159, 0.16),
-    transparent 65%
-  );
-
-  opacity: 0;
-
-  pointer-events: none;
-
-  transition: opacity 1s ease;
-}
-
-/* ambient playback lighting effect */
+/* width set to 100% so video scales with browser size */
 
 .custom-controls {
   display: flex;
@@ -172,6 +162,8 @@ video {
 
   gap: 0.8rem;
 }
+
+/* spread out the controls across the interface to improve balance */
 
 #like-count {
   font-size: 0.95rem;
@@ -200,7 +192,7 @@ video {
     box-shadow 0.25s ease;
 }
 
-/* balanced control layout improves visual hierarchy and usability */
+/* I used rounded buttons and transitions to make controls feel softer and more futuristic, had to use chatgpt and google for this because I was unsure about how to do animations */
 
 .custom-controls button:hover {
   transform: scale(1.06);
@@ -212,6 +204,8 @@ video {
     0 0 24px rgba(255, 46, 159, 0.25);
 }
 
+/* button slightly increases in scale and glows when hovered over to improve feedback/anticipation */
+
 .custom-controls img {
   width: 20px;
 
@@ -219,6 +213,8 @@ video {
 
   filter: invert(1);
 }
+
+/* inverted icons so they remain visible against dark background */
 
 .progress-container {
   width: calc(100% - 2.4rem);
@@ -236,8 +232,6 @@ video {
   cursor: pointer;
 }
 
-/* hover glow improves feedback without overcomplicating the UI */
-
 #progress-bar-fill {
   display: block;
 
@@ -247,6 +241,8 @@ video {
 
   background: linear-gradient(90deg, var(--purple-glow), var(--pink-glow));
 }
+
+/* made progress bar a gradient because it looks really cool and fits with colour palette */
 
 .time-display {
   display: flex;
@@ -260,7 +256,7 @@ video {
   color: var(--secondary-text);
 }
 
-/* gradient progress bar visually connects with the purple and pink lighting */
+/* shows the video time */
 
 @media (max-width: 700px) {
   .custom-controls {
@@ -274,4 +270,4 @@ video {
   }
 }
 
-/* mobile responsive adjustments */
+/* media query added so the layout still works on smaller screen sizes */

@@ -19,24 +19,23 @@
   <body>
     <main class="page-layout">
       <header class="hero">
-        <!-- made layout intentionally minimal so the artwork itself becomes the primary visual focus instead of large amounts of explanatory website text. -->
+        <!-- made layout intentionally minimal so the artwork itself becomes the primary visual focus -->
         <p class="sub-heading">ATMOSPHERIC • HYPNOTIC • ETHEREAL</p>
         <!-- added three adjectives underneath title to describe/make statements about the artwork -->
         <h1>Tenebrae Kinesis</h1>
       </header>
       <div class="container">
         <section class="player-glow" id="player-glow">
-          <!-- glow wrapper to increase lighting intensity when users interact with the like button. -->
+          <!-- glow wrapper to increase lighting intensity when users interact with the like button -->
           <section class="media-player">
             <div class="video-wrapper">
+              <!-- added class and id tags for the media player and wrapper -->
               <video id="custom-video-player">
                 <source
                   src="https://thelongesthumstore.sgp1.cdn.digitaloceanspaces.com/IM-2250/miac.mp4"
                   type="video/mp4"
                 />
               </video>
-              <div class="ambient-light"></div>
-              <!-- Ambient overlay creates subtle cinematic lighting during playback -->
             </div>
             <div class="custom-controls">
               <div class="controls-left">
@@ -62,6 +61,7 @@
                 </button>
               </div>
               <div class="controls-middle">
+                <!-- positioned like button in middle to make it feel like the main interaction feature -->
                 <button id="like-btn">
                   <img
                     src="https://img.icons8.com/?size=100&id=DFU1kReSUccu&format=png&color=FFFFFF"
@@ -70,7 +70,7 @@
                 </button>
                 <span id="like-count">0</span>
               </div>
-              <!-- created users can repeatedly “like” the artwork, increasing the surrounding glow intensity. -->
+              <!-- made it so users can repeatedly “like” the artwork, increasing the surrounding glow intensity, and also counting likes for visible feedback -->
               <div class="controls-right">
                 <button id="mute-btn">
                   <img
