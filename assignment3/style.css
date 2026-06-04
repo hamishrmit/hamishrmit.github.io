@@ -15,3 +15,59 @@ body {
 .scroll-space {
   height: 5000px;
 }
+
+/* hides the vertical scroll wheel on the right side of the page */
+
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+/* main text */
+
+#heroText {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+  text-align: center;
+
+  z-index: 10;
+  pointer-events: none;
+}
+
+#heroText h1 {
+  color: white;
+  font-family: "Orbitron", sans-serif;
+  font-size: 10rem;
+  font-weight: 700;
+  letter-spacing: 0.4rem;
+
+  margin-bottom: 1rem;
+
+  text-shadow:
+    0 0 10px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(130, 60, 255, 0.5);
+}
+
+#heroText p {
+  color: rgba(255, 255, 255, 0.8);
+
+  font-family: "Inter", sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+
+  text-shadow:
+    0 0 10px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(130, 60, 255, 0.5);
+}
