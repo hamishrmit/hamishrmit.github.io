@@ -1,0 +1,17 @@
+body {
+  background: #000;
+  overflow-x: hidden;
+}
+
+#bikeCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+.scroll-space {
+  height: 5000px;
+}
