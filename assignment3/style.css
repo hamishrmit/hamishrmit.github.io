@@ -71,3 +71,86 @@ html::-webkit-scrollbar {
     0 0 20px rgba(0, 0, 0, 0.6),
     0 0 30px rgba(130, 60, 255, 0.5);
 }
+
+/* hotspot container */
+
+#hotspots {
+  position: fixed;
+  inset: 0;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.4s ease;
+
+  z-index: 30;
+}
+
+#hotspots.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* individual parts */
+
+.part {
+  position: absolute;
+}
+
+.part img {
+  display: block;
+
+  transition:
+    transform 0.25s ease,
+    filter 0.25s ease;
+}
+
+/* hover effect */
+
+.part:hover img {
+  transform: scale(1.08);
+
+  filter: drop-shadow(0 0 8px #9d4edd) drop-shadow(0 0 20px #9d4edd)
+    drop-shadow(0 0 40px #9d4edd);
+}
+
+/* labels */
+
+.part::after {
+  content: attr(data-label);
+
+  position: absolute;
+
+  bottom: 110%;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  opacity: 0;
+
+  background: rgba(15, 15, 15, 0.95);
+
+  border: 1px solid rgba(157, 78, 221, 0.5);
+
+  box-shadow: 0 0 15px rgba(157, 78, 221, 0.25);
+
+  color: white;
+
+  padding: 10px 14px;
+
+  border-radius: 10px;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 0.85rem;
+
+  white-space: nowrap;
+
+  pointer-events: none;
+
+  transition: opacity 0.25s ease;
+}
+
+.part:hover::after {
+  opacity: 1;
+}
