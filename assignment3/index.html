@@ -2,13 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Motorbike Scroll Function</title>
-
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Motorbike Scroll + Hover Function</title>
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Orbitron for the tech aesthetic on the title, Inter for readable labels -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Orbitron:wght@500;700&display=swap"
       rel="stylesheet"
@@ -16,14 +20,18 @@
   </head>
 
   <body>
+    <!-- hero text/title that fades out as the user begins scrolling -->
     <div id="heroText">
       <h1>YAMAHA</h1>
       <p>Discover the machine beneath the design.</p>
     </div>
 
+    <!-- the canvas renders each animation frame -->
     <canvas id="bikeCanvas"></canvas>
 
+    <!-- made it so that the parts can be hovered over at the end of the scroll, turning them into interactive 'hotspots' -->
     <div id="hotspots">
+      <!-- each part has a cropped transparent PNG and a data-label. I did this by using Photoshop to crop out and save each part, and came up with realistic-sounding names for the parts -->
       <div
         id="mainframe"
         class="part mainframe"
@@ -73,6 +81,10 @@
       </div>
     </div>
 
+    <!-- hint text that fades in alongside the hotspots at the final frame -->
+    <div id="hoverHint">Hover over parts to inspect</div>
+
+    <!-- tall empty div creates the scroll height that drives the animation -->
     <div class="scroll-space"></div>
 
     <script src="script.js"></script>

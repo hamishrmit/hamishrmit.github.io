@@ -1,23 +1,24 @@
+/* black background suits the dark motorbike aesthetic */
 body {
   background: #000;
   overflow-x: hidden;
 }
 
+/* fixed so it stays fullscreen while the page scrolls beneath it */
 #bikeCanvas {
   position: fixed;
   top: 0;
   left: 0;
-
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 
+/* height maps to the 200 animation frames */
 .scroll-space {
   height: 5000px;
 }
 
-/* hides the vertical scroll wheel on the right side of the page */
-
+/* here I hid the scrollbar to keep the fullscreen feel */
 html {
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -29,6 +30,7 @@ html::-webkit-scrollbar {
 
 /* main text */
 
+/* pointer-events none so text never blocks scroll or hover interactions */
 #heroText {
   position: fixed;
   top: 50%;
@@ -41,6 +43,7 @@ html::-webkit-scrollbar {
   pointer-events: none;
 }
 
+/* went with Orbitron for its mechanical look, fitting the motorbike context */
 #heroText h1 {
   color: white;
   font-family: "Orbitron", sans-serif;
@@ -50,12 +53,14 @@ html::-webkit-scrollbar {
 
   margin-bottom: 1rem;
 
+  /* purple glow matches the hover accent colour used on parts */
   text-shadow:
     0 0 10px rgba(0, 0, 0, 0.8),
     0 0 20px rgba(0, 0, 0, 0.6),
     0 0 30px rgba(130, 60, 255, 0.5);
 }
 
+/* Inter is more readable than Orbitron at smaller sizes */
 #heroText p {
   color: rgba(255, 255, 255, 0.8);
 
@@ -74,6 +79,7 @@ html::-webkit-scrollbar {
 
 /* hotspot container */
 
+/* hidden and non-interactive by default, revealed at the final frame */
 #hotspots {
   position: fixed;
   inset: 0;
@@ -81,6 +87,7 @@ html::-webkit-scrollbar {
   opacity: 0;
   pointer-events: none;
 
+  /* fade in gives a smoother reveal than appearing instantly */
   transition: opacity 0.4s ease;
 
   z-index: 30;
@@ -93,12 +100,16 @@ html::-webkit-scrollbar {
 
 /* individual parts */
 
+/* absolute so script.js can place each part precisely over the canvas */
 .part {
   position: absolute;
 }
 
+/* fills the div so the image scales correctly when script.js resizes the part */
 .part img {
   display: block;
+  width: 100%;
+  height: 100%;
 
   transition:
     transform 0.25s ease,
@@ -107,15 +118,18 @@ html::-webkit-scrollbar {
 
 /* hover effect */
 
+/* scale up gives clear feedback that the part is interactive */
 .part:hover img {
   transform: scale(1.08);
 
+  /* layered purple glow matches the brand colour I went with */
   filter: drop-shadow(0 0 8px #9d4edd) drop-shadow(0 0 20px #9d4edd)
     drop-shadow(0 0 40px #9d4edd);
 }
 
 /* labels */
 
+/* tooltip text pulled from data-label so that there is no extra HTML needed per part */
 .part::after {
   content: attr(data-label);
 
@@ -144,6 +158,7 @@ html::-webkit-scrollbar {
 
   font-size: 0.85rem;
 
+  /* used nowrap to keep the label on one line */
   white-space: nowrap;
 
   pointer-events: none;
@@ -152,5 +167,46 @@ html::-webkit-scrollbar {
 }
 
 .part:hover::after {
+  opacity: 1;
+}
+
+/* flips tooltip to below for parts near the top so that it prevents it going off screen */
+.part.label-below::after {
+  bottom: auto;
+  top: 110%;
+}
+
+/* I raised parts above others when necessary so the label isn't hidden behind stuff */
+#cowling {
+  z-index: 10;
+}
+
+#suspension:hover {
+  z-index: 20;
+}
+
+/* hint fades in with the hotspots to guide the user */
+#hoverHint {
+  position: fixed;
+  top: 2rem;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  color: rgba(255, 255, 255, 0.6);
+  font-family: "Inter", sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.4s ease;
+
+  z-index: 5;
+}
+
+#hoverHint.active {
   opacity: 1;
 }
