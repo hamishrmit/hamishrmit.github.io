@@ -136,3 +136,5 @@ window.addEventListener("pageshow", () => {
     positionHotspots();
   });
 });
+
+// future benefit: if expanded into a full website, this interaction could serve as the landing page of a Motorbike company (such as Yamaha) that transitions naturally into product pages for each part
